@@ -185,8 +185,11 @@ public class IOSDialog extends Dialog {
             // 2.得到屏幕高度
             // 2. Get the screen height
             WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
-            DisplayMetrics metrics = new DisplayMetrics();
-            wm.getDefaultDisplay().getMetrics(metrics);
+            //DisplayMetrics metrics = new DisplayMetrics();
+
+            final DisplayMetrics metrics = dialogView.getContext().getResources().getDisplayMetrics();
+
+            //wm.getDefaultDisplay().getMetrics(metrics);
             int maxHeight = (int) (metrics.heightPixels * 0.8);
             ViewGroup.LayoutParams dialogParams = new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,

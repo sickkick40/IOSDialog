@@ -114,27 +114,17 @@ public class IOSSheetDialog extends Dialog implements DialogInterface {
                     btnItem.setBackgroundResource(R.drawable.iossheet_bottom_btn_selector);
                 }
                 final int itemIndex = i;
-                btnItem.setOnClickListener(new View.OnClickListener() {
-                    
-                    @Override
-                    public void onClick(View v) {
-                        if(mOnClickListener != null) {
-                            mOnClickListener.onClick(mIosSheetDialog, itemIndex);
-                        }
-                        mIosSheetDialog.dismiss();
+                btnItem.setOnClickListener(v -> {
+                    if(mOnClickListener != null) {
+                        mOnClickListener.onClick(mIosSheetDialog, itemIndex);
                     }
+                    mIosSheetDialog.dismiss();
                 });
                 message_layout.addView(itemView);
             }
             btn_cancel.setText(mCancelText);
             // 设置取消事件
-            btn_cancel.setOnClickListener(new View.OnClickListener() {
-                
-                @Override
-                public void onClick(View v) {
-                    mIosSheetDialog.dismiss();
-                }
-            });
+            btn_cancel.setOnClickListener(v -> mIosSheetDialog.dismiss());
             
             // 获取屏幕高度
             WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
